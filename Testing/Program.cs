@@ -157,9 +157,9 @@ public class profCreate
     static double phone;
     static double id;
     static double age;
-
+   
     public static void createFile()
-    {
+    {               
         Console.Write("\nnow to finish your reservation please enter your profile information:\n");
 
         Console.Write("\nName:");
@@ -180,13 +180,60 @@ public class profCreate
         age = int.Parse(Console.ReadLine());
 
         string stringInFile = "\nname:" + name + "\naddress:" + address + "\ngender:" + gender + "\nbloodType:" + bloodType +
-         "\ndisease:" + disease + "\nphone:" + phone + "\nid:" + id + "\nage:" + age + "\nThis profile has an appointment with Dr." + Doctor.drName + " at " + Doctor.drTime;
+         "\ndisease:" + disease + "\nphone:" + phone + "\nid:" + id + "\nage:" + age + "\nThis profile has an appointment with Dr."+ Doctor.drName + " at "+ Doctor.drTime;
 
         string fileName = name + ".txt";
 
-        File.WriteAllText(@"C:\Users\spect\Desktop\Testing\" + fileName, stringInFile);
+        File.WriteAllText(@"C:\Users\spect\Desktop\Testing\"+fileName, stringInFile);
     }
 }
+
+class Program
+{
+    static void Main()
+    {
+        mkDoctor.mkDoctors();
+        strings.printString1();
+
+        var c1 = int.Parse(Console.ReadLine());
+        if (c1 == 1)
+        {
+            Console.Clear();
+            strings.printString2();
+
+            Console.Write("\nPlease choose the clinic department you want:");
+
+            int c2 = int.Parse(Console.ReadLine());
+            while (c2 <= 0 || c2 > 5)
+            {
+                Console.WriteLine("\nIncorrect Choice ... Please Choose again!");
+                Console.Write("\nChoose the clinic department you want:");
+                c2 = int.Parse(Console.ReadLine());
+            }
+
+            Console.Clear();
+
+            Doctor.printDoctor(mkDoctor.DoctorList, c2);
+
+            Console.WriteLine("\nWhich doctor would you like to make appointment with?");
+            Console.Write("Your choice is:");
+
+            int c3 = int.Parse(Console.ReadLine());
+
+            Doctor.chooseDoctor(mkDoctor.DoctorList, c3);
+
+            Console.WriteLine("\nWhich time would you like to make appointment at?");
+            Console.Write("Your choice is:");
+
+            int c4 = int.Parse(Console.ReadLine());
+
+            Doctor.chooseTime(mkDoctor.DoctorList, c4);
+
+            profCreate.createFile();
+        }
+    }
+}
+
 class mkDoctor
 {
     public static List<Doctor> DoctorList = new List<Doctor>();
@@ -277,54 +324,3 @@ class mkDoctor
         DoctorList.Add(doc10);
     }
 }
-class Program
-{
-    static void Main()
-    {
-        mkDoctor.mkDoctors();
-        strings.printString1();
-
-        var c1 = int.Parse(Console.ReadLine());
-        if (c1 == 1)
-        {
-            Console.Clear();
-            strings.printString2();
-
-            Console.Write("\nPlease choose the clinic department you want:");
-
-            int c2 = int.Parse(Console.ReadLine());
-            while (c2 <= 0 || c2 > 5)
-            {
-                Console.WriteLine("\nIncorrect Choice ... Please Choose again!");
-                Console.Write("\nChoose the clinic department you want:");
-                c2 = int.Parse(Console.ReadLine());
-            }
-
-            Console.Clear();
-
-            Doctor.printDoctor(mkDoctor.DoctorList, c2);
-
-            Console.WriteLine("\nWhich doctor would you like to make appointment with?");
-            Console.Write("Your choice is:");
-
-            int c3 = int.Parse(Console.ReadLine());
-
-            Doctor.chooseDoctor(mkDoctor.DoctorList, c3);
-
-            Console.WriteLine("\nWhich time would you like to make appointment at?");
-            Console.Write("Your choice is:");
-
-            int c4 = int.Parse(Console.ReadLine());
-
-            Doctor.chooseTime(mkDoctor.DoctorList, c4);
-
-            profCreate.createFile();
-        }
-
-        for(int i = 0; i <= 100; i++)
-        {
-            Console.WriteLine(i);
-        }
-    }
-}
-
