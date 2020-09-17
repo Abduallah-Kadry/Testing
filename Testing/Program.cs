@@ -187,6 +187,7 @@ public class profCreate
         File.WriteAllText(@"C:\Users\spect\Desktop\Testing\" + fileName, stringInFile);
     }
 }
+
 class mkDoctor
 {
     public static List<Doctor> DoctorList = new List<Doctor>();
@@ -264,7 +265,6 @@ class mkDoctor
             DoctorAppointment1 = "Monday from 9am to 3pm",
             DoctorAppointment2 = "Thursday from 2pm to 9pm"
         };
-
         DoctorList.Add(doc1);
         DoctorList.Add(doc2);
         DoctorList.Add(doc3);
@@ -277,6 +277,78 @@ class mkDoctor
         DoctorList.Add(doc10);
     }
 }
+
+public static class printarray
+{
+    
+    public static void printlabels(List<string> aks)
+    {
+        Console.WriteLine("Please choose from the following Analyzes:\n");
+        foreach (string i in aks)
+        {
+            Console.WriteLine(i);
+        }
+
+    }
+}
+
+public class dictionary
+{
+    public int id { get; set; }
+    public string analyzingName { get; set; }
+    public int analyzingPrice { get; set; }
+
+}
+public class printtotalprice : dictionary
+{
+    static int o = 0;
+
+    public static void print(Dictionary<int, dictionary> abe)
+    {
+        Console.Write("Please Enter your choice:");
+
+        int z = int.Parse(Console.ReadLine());
+
+        while (z > 10 || z < 0)
+        {
+            Console.WriteLine("Wrong Choice ... please Choose again");
+            Console.Write("Your chice:");
+            z = int.Parse(Console.ReadLine());
+        }
+        int Totalprice = 0;
+        do
+        {
+            Totalprice = Totalprice + abe[z].analyzingPrice;
+            z += z;
+            Console.WriteLine("Do you want to choose another analyzing");
+            Console.WriteLine("Write \"yes\" if you want to continue:");
+            string s = Console.ReadLine();
+            if (s == "yes")
+            {
+                Console.WriteLine("Please Enter your choice");
+                z = int.Parse(Console.ReadLine());
+                while (z > 10 || z < 0)
+                {
+                    Console.WriteLine("Wrong Choice ... please Choose again");
+                    Console.Write("Your chice:");
+                    z = int.Parse(Console.ReadLine());
+                }
+                Totalprice += abe[z].analyzingPrice;
+            }
+            else
+            {
+                break;
+            }
+            o += 1;
+
+        } while (o <= 10);
+
+        Console.WriteLine("The Total Price is {0}", Totalprice);
+
+        Console.WriteLine("\nThe process has been done sucessfully");
+    }
+}
+
 class Program
 {
     static void Main()
@@ -285,7 +357,14 @@ class Program
         strings.printString1();
 
         var c1 = int.Parse(Console.ReadLine());
-        if (c1 == 1)
+
+        while (c1 > 2 || c1 < 1)
+        {
+            Console.WriteLine("\nWrong choice ... Please chose again!");
+            Console.Write("Your Choice is:");
+            c1 = int.Parse(Console.ReadLine());
+        }
+         if (c1 == 1)
         {
             Console.Clear();
             strings.printString2();
@@ -320,10 +399,95 @@ class Program
 
             profCreate.createFile();
         }
-
-        for(int i = 0; i <= 100; i++)
+        else if(c1 == 2)
         {
-            Console.WriteLine(i);
+
+            List<string> arraydictionary = new List<string> { "1. C.B.C", "2. R.B.C", "3. L.C.D", "4. W.B.C", "5. Hgb",
+                "6. E.S.R", "7. APTT", "8. G6PD", "9. TSH", "10. C.B.R" };
+            Dictionary<int, dictionary> analyzingdictionary = new Dictionary<int, dictionary>();
+
+            dictionary analyzing1 = new dictionary()
+            {
+                analyzingName = "C.B.C",
+                id = 1,
+                analyzingPrice = 300
+
+            };
+            dictionary analyzing2 = new dictionary()
+            {
+                analyzingName = "R.B.C",
+                id = 2,
+                analyzingPrice = 400
+
+            };
+            dictionary analyzing3 = new dictionary()
+            {
+                analyzingName = "L.C.D",
+                id = 3,
+                analyzingPrice = 500
+
+            };
+            dictionary analyzing4 = new dictionary()
+            {
+                analyzingName = "W.B.C",
+                id = 4,
+                analyzingPrice = 600
+
+            };
+            dictionary analyzing5 = new dictionary()
+            {
+                analyzingName = "Hgb",
+                id = 5,
+                analyzingPrice = 700
+
+            };
+            dictionary analyzing6 = new dictionary()
+            {
+                analyzingName = "E.S.R",
+                id = 6,
+                analyzingPrice = 800
+
+            };
+            dictionary analyzing7 = new dictionary()
+            {
+                analyzingName = "APTT",
+                id = 7,
+                analyzingPrice = 350
+
+            };
+            dictionary analyzing8 = new dictionary()
+            {
+                analyzingName = "G6PD",
+                id = 8,
+                analyzingPrice = 550
+
+            };
+            dictionary analyzing9 = new dictionary()
+            {
+                analyzingName = "TSH",
+                id = 9,
+                analyzingPrice = 650
+
+            };
+            dictionary analyzing10 = new dictionary()
+            {
+                analyzingName = "C.B.R",
+                id = 10,
+                analyzingPrice = 750
+            };
+            analyzingdictionary.Add(analyzing1.id, analyzing1);
+            analyzingdictionary.Add(analyzing2.id, analyzing2);
+            analyzingdictionary.Add(analyzing3.id, analyzing3);
+            analyzingdictionary.Add(analyzing4.id, analyzing4);
+            analyzingdictionary.Add(analyzing5.id, analyzing5);
+            analyzingdictionary.Add(analyzing6.id, analyzing6);
+            analyzingdictionary.Add(analyzing7.id, analyzing7);
+            analyzingdictionary.Add(analyzing8.id, analyzing8);
+            analyzingdictionary.Add(analyzing9.id, analyzing9);
+            analyzingdictionary.Add(analyzing10.id, analyzing10);
+
+            printarray.printlabels(arraydictionary);
+            printtotalprice.print(analyzingdictionary);
         }
     }
 }
