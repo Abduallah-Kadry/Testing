@@ -149,7 +149,9 @@ public class Doctor
 
 public class profCreate
 {
+
     static string name;
+    static string a7a;
     static string address;
     static string gender;
     static string bloodType;
