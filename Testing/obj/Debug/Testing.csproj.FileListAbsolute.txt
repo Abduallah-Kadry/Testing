@@ -1,0 +1,6 @@
+C:\Users\spect\Desktop\Testing\Testing\bin\Debug\Testing.exe.config
+C:\Users\spect\Desktop\Testing\Testing\bin\Debug\Testing.exe
+C:\Users\spect\Desktop\Testing\Testing\bin\Debug\Testing.pdb
+C:\Users\spect\Desktop\Testing\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\spect\Desktop\Testing\Testing\obj\Debug\Testing.exe
+C:\Users\spect\Desktop\Testing\Testing\obj\Debug\Testing.pdb
