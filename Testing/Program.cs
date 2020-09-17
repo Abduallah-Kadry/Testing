@@ -320,7 +320,11 @@ class Program
 
             profCreate.createFile();
         }
-        Console.WriteLine("Changed places");
+
+        for(int i = 0; i <= 100; i++)
+        {
+            Console.WriteLine(i);
+        }
     }
 }
 
