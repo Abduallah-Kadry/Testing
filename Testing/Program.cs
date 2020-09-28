@@ -57,7 +57,6 @@ public class Doctor
     public string DoctorName { get; set; }
     public string DoctorAppointment1 { get; set; }
     public string DoctorAppointment2 { get; set; }
-    public string DoctorAppointment3 { get; set; }
 
     public static int indexNum1;
     public static int indexNum2;
@@ -67,7 +66,7 @@ public class Doctor
 
     public static string[] clinicArr = new string[5]
     {
-        "InternalMedicine",
+        "InternalMedicine clinic",
         "Heart clinic",
         "Ear,nose and throat clinic",
         "Urology clinic",
@@ -106,7 +105,6 @@ public class Doctor
         while (i < 1 || i > 2)
         {
             Console.Write("\nWrong Choice ... Please choose between the two doctors:");
-
             i = int.Parse(Console.ReadLine());
         }
         if (i == 1)
@@ -114,7 +112,6 @@ public class Doctor
             Console.WriteLine("\nYou have choosen Dr.{0}", enterdList[indexList[0]].DoctorName);
             indexNum2 = i;
             drName = enterdList[indexList[0]].DoctorName;
-
         }
         else if (i == 2)
         {
@@ -129,14 +126,11 @@ public class Doctor
         while (z < 1 || z > 2)
         {
             Console.Write("\nWrong Choice ... Please choose between the two Times:");
-
             z = int.Parse(Console.ReadLine());
-
         }
         if (z == 1)
         {
             Console.WriteLine("\nYou have choosen to make the appointment at: {0}", enterdList[indexList[indexNum2 - 1]].DoctorAppointment1);
-
             drTime = enterdList[indexList[indexNum2 - 1]].DoctorAppointment1;
         }
         else if (z == 2)
@@ -179,12 +173,15 @@ public class profCreate
         Console.Write("age:");
         age = int.Parse(Console.ReadLine());
 
-        string stringInFile = "\nname:" + name + "\naddress:" + address + "\ngender:" + gender + "\nbloodType:" + bloodType +
-         "\ndisease:" + disease + "\nphone:" + phone + "\nid:" + id + "\nage:" + age + "\nThis profile has an appointment with Dr." + Doctor.drName + " at " + Doctor.drTime;
+        string stringInFile = "Name:" + name + "\nAddress:" + address + "\nGender:" + gender + "\nBloodType:" + bloodType +
+         "\nDisease:" + disease + "\nPhone:" + phone + "\nID:" + id + "\nAge:" + age + "\nThis profile has an appointment with Dr." 
+         + Doctor.drName + " at " + Doctor.drTime + " at " + Doctor.clinicArr[Doctor.indexNum1 - 1];
 
         string fileName = name + ".txt";
 
         File.WriteAllText(@"C:\Users\spect\Desktop\Testing\" + fileName, stringInFile);
+
+        Console.WriteLine("Your profile has been created successfully");
     }
 }
 
@@ -204,7 +201,7 @@ class mkDoctor
         };
         Doctor doc2 = new Doctor()
         {
-            ClinicName = "InternalMedicine",
+            ClinicName = "InternalMedicine clinic",
             DoctorName = "Ahmed Abdullah",
             DoctorAppointment1 = "Sunday from 11am to 6pm",
             DoctorAppointment2 = "Wednesday from 7am to 2pm"
@@ -218,7 +215,7 @@ class mkDoctor
         };
         Doctor doc4 = new Doctor()
         {
-            ClinicName = "InternalMedicine",
+            ClinicName = "InternalMedicine clinic",
             DoctorName = "Moahmoud Elsaeed",
             DoctorAppointment1 = "Friday from 12pm to 8pm",
             DoctorAppointment2 = "Sunday from 9am to 4pm"
@@ -280,7 +277,6 @@ class mkDoctor
 
 public static class printarray
 {
-    
     public static void printlabels(List<string> aks)
     {
         Console.WriteLine("Please choose from the following Analyzes:\n");
@@ -315,12 +311,14 @@ public class printtotalprice : dictionary
             Console.Write("Your chice:");
             z = int.Parse(Console.ReadLine());
         }
+
         int Totalprice = 0;
+
         do
         {
             Totalprice = Totalprice + abe[z].analyzingPrice;
             z += z;
-            Console.WriteLine("Do you want to choose another analyzing");
+            Console.WriteLine("Do you want to choose another analysis");
             Console.WriteLine("Write \"yes\" if you want to continue:");
             string s = Console.ReadLine();
             if (s == "yes")
@@ -364,7 +362,7 @@ class Program
             Console.Write("Your Choice is:");
             c1 = int.Parse(Console.ReadLine());
         }
-         if (c1 == 1)
+        if (c1 == 1)
         {
             Console.Clear();
             strings.printString2();
@@ -399,11 +397,12 @@ class Program
 
             profCreate.createFile();
         }
-        else if(c1 == 2)
+        else if (c1 == 2)
         {
 
             List<string> arraydictionary = new List<string> { "1. C.B.C", "2. R.B.C", "3. L.C.D", "4. W.B.C", "5. Hgb",
                 "6. E.S.R", "7. APTT", "8. G6PD", "9. TSH", "10. C.B.R" };
+
             Dictionary<int, dictionary> analyzingdictionary = new Dictionary<int, dictionary>();
 
             dictionary analyzing1 = new dictionary()

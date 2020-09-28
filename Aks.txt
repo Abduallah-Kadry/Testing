@@ -1,9 +1,0 @@
-
-name:Aks
-address:8 Share3 Haron ELrashed
-gender:male
-bloodType:O+
-disease:Dispreasd
-phone:1202190865
-id:20190326
-age:19This profile has an appointment with Dr.{0} at{1}Ahmed AbdullahFriday from 12pm to 8pm
